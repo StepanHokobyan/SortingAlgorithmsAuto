@@ -7,7 +7,6 @@ namespace SortingAlgorithmsAuto.Interface
     interface ISort
     {
         int n { get; set; }
-        int[] arr { get; set; } 
 
         void Compare();
         void SetValues();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using SortingAlgorithmsAuto.Interface;
 
 namespace SortingAlgorithmsAuto
@@ -7,6 +8,8 @@ namespace SortingAlgorithmsAuto
     {
         public  int n { get; set; }
         public int[] arr { get; set; }
+        Stopwatch timePerParse;
+        private long ticksThisTime;
 
         public Insertion(int num)
         {
@@ -21,20 +24,23 @@ namespace SortingAlgorithmsAuto
             {
                 arr[i] = random.Next(0 , 10000);
             }
+            Console.WriteLine("The Insertion");
             for (int i = 0; i < n; i++)
             {
                 Console.Write(arr[i] + " ");
             }
+            Console.WriteLine();
             Compare();
         }
 
         public void Compare()
         {
+            DateTime startTime = DateTime.Now;
             for (int i = 1; i < n; i++)
             {
                 int val = arr[i];
-                int flag = 0;
-                for (int j = i - 1; j >= 0 && flag != 1;)
+                int end = 0;
+                for (int j = i - 1; j >= 0 && end != 1;)
                 {
                     if (val < arr[j])
                     {
@@ -42,13 +48,18 @@ namespace SortingAlgorithmsAuto
                         j--;
                         arr[j + 1] = val;
                     }
-                    else flag = 1;
+                    else end = 1;
                 }
             }
+            Console.WriteLine("Sorted");
             for (int i = 0; i < n; i++)
             {
                 Console.Write(arr[i] + " ");
             }
+            Console.WriteLine();
+            DateTime endTime = DateTime.Now;
+            Console.WriteLine("The Time " + (endTime - startTime));
+            Console.WriteLine("Total Memory: {0}", GC.GetTotalMemory(false));
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using SortingAlgorithmsAuto.Interface;
 
@@ -9,6 +10,8 @@ namespace SortingAlgorithmsAuto
     {
         public int n { get; set; }
         public int[] arr { get; set; }
+        Stopwatch timePerParse;
+        private long ticksThisTime;
 
         public Bubble(int num)
         {
@@ -23,15 +26,18 @@ namespace SortingAlgorithmsAuto
             {
                 arr[i] = random.Next(0, 10000);
             }
+            Console.WriteLine("The Bubble");
             for (int i = 0; i < n; i++)
             {
                 Console.Write(arr[i] + " ");
             }
+            Console.WriteLine();
             Compare();
         }
 
         public void Compare()
         {
+            DateTime startTime = DateTime.Now;
             for (int j = 0; j < n; j++)
             {
                 for (int i = 0; i < n; i++)
@@ -44,10 +50,15 @@ namespace SortingAlgorithmsAuto
                     }
                 }
             }
+            Console.WriteLine("Sorted");
             for (int i = 0; i < n; i++)
             {
                 Console.Write(arr[i] + " ");
             }
+            Console.WriteLine();
+            DateTime endTime = DateTime.Now;
+            Console.WriteLine("The Time " + (endTime - startTime));
+            Console.WriteLine("Total Memory: {0}", GC.GetTotalMemory(false));
         }
     }
 }
