@@ -10,8 +10,13 @@ namespace SortingAlgorithmsAuto
 
         public void StartProgram()
         {
-            
+            Console.WriteLine("The number of array elements");
             NOA = int.Parse(Console.ReadLine());
+            Console.WriteLine("Operations");
+            Console.WriteLine("1.Insertation Sorting Algorithm");
+            Console.WriteLine("2.Bubble Sorting Algorithm");
+            Console.WriteLine("3.Merge Sorting Algorithm");
+            Console.WriteLine("4.All Sorting Algorithm");
             OperationSelect = int.Parse(Console.ReadLine());
 
             Insertion insertion = new Insertion(NOA);
